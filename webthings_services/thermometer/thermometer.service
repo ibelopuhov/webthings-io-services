@@ -1,0 +1,14 @@
+[Unit]
+Description= DS18B20 Thermometer Web Thing for https://webthings.io/
+After=network.target
+
+[Service]
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/webthings-io-services/webthing_services
+Environment="PATH=/home/pi/webthings-io-services/venv/bin"
+EnvironmentFile=/home/pi/webthings-io-services/webthings_services/thermometer/.env
+ExecStart=/home/pi/webthings-io-services/venv/bin/python3 -m thermometer.rpi_ds18b20_thing
+
+[Install]
+WantedBy=multi-user.target

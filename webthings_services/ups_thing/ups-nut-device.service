@@ -1,0 +1,14 @@
+[Unit]
+Description=UPS NUT connected Thing for https://webthings.io/
+After=network.target
+
+[Service]
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/webthings-io-services
+Environment="PATH=/home/pi/webthings-io-services/venv/bin"
+EnvironmentFile=/home/pi/webthings-io-services/webthings_services/ups-thing/.env
+ExecStart=/home/pi/webthings-io-services/venv/bin/python3 -m webthings_services.ups_thing.ups_nut_device_thing
+
+[Install]
+WantedBy=multi-user.target
